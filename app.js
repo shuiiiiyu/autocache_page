@@ -399,14 +399,23 @@ function renderImageGallery(scenes) {
 
 const methodVideo = document.querySelector('#method-video');
 const chapterButtons = [...document.querySelectorAll('.method-chapters button')];
+let pendingChapter = null;
+
+function seekToMethodChapter() {
+  if (pendingChapter === null || methodVideo.readyState < methodVideo.HAVE_METADATA) return;
+  methodVideo.currentTime = pendingChapter;
+  pendingChapter = null;
+}
 
 for (const button of chapterButtons) {
   button.addEventListener('click', () => {
-    methodVideo.currentTime = Number(button.dataset.start);
+    pendingChapter = Number(button.dataset.start);
+    seekToMethodChapter();
     methodVideo.play().catch(() => {});
   });
 }
 
+methodVideo.addEventListener('loadedmetadata', seekToMethodChapter);
 methodVideo.addEventListener('timeupdate', () => {
   const current = chapterButtons.findLast(button => methodVideo.currentTime >= Number(button.dataset.start));
   for (const button of chapterButtons) {
