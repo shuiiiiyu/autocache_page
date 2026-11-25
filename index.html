@@ -25,8 +25,8 @@
     </div>
   </header>
   <main id="top">
-    <section class="media-shell hero" aria-labelledby="title">
-      <header class="hero-heading">
+    <section class="hero" aria-labelledby="title">
+      <header class="media-shell hero-heading">
         <h1 class="project-title" id="title">AutoCache: Agent-Designed Caching for Image and Video Generation</h1>
         <div class="project-meta"><p class="project-authors"><a href="https://github.com/shuiiiiyu">Canyu Shen</a><sup>1</sup> · <a href="https://github.com/cheyan9">Yang Chen</a><sup>2</sup> · <a href="https://github.com/TetuDegit">Gezhi Zhu</a><sup>2</sup> · <a href="https://www.cwi.nl/en/people/xuemei-zhou/">Xuemei Zhou</a><sup>3</sup> · <a href="https://tenglon.github.io/">Teng Long</a><sup>4</sup> · <a href="https://taohu.me/">Vincent Tao Hu</a><sup>2</sup></p><p class="project-affiliations"><sup>1</sup>Tongji University · <sup>2</sup>Huazhong University of Science and Technology<br><sup>3</sup>Centrum voor Wiskunde en Informatica (CWI) · <sup>4</sup>University of Trento</p><p class="project-links"><a href="https://github.com/vibe-hust/autocache_code">Code</a><a href="https://github.com/vibe-hust">VibeLab</a></p></div>
         <div class="text-panel hero-summary">
@@ -39,19 +39,21 @@
           <p class="hero-baseline">Speedup relative to uncached inference</p>
         </div>
       </header>
-      <figure class="hero-figure" id="hero-comparison" aria-label="Original and AutoCache video showcase">
-        <div class="scene-switcher" role="group" aria-label="Showcase scenes"></div>
-        <div class="hero-stage">
-          <div class="hero-panels" id="hero-panels"></div>
-          <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous video example" aria-controls="hero-panels" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#carousel-arrow-icon"></use></svg></button>
-          <button class="carousel-arrow carousel-next" type="button" aria-label="Next video example" aria-controls="hero-panels" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#carousel-arrow-icon"></use></svg></button>
-        </div>
-        <figcaption class="hero-caption">
-          <span class="prompt" aria-live="polite"></span>
-          <button class="play" type="button" hidden></button>
-          <span class="video-status" role="status" hidden></span>
-        </figcaption>
-      </figure>
+      <div class="hero-showcase">
+        <figure class="media-shell hero-figure" id="hero-comparison" aria-label="Original and AutoCache video showcase">
+          <div class="scene-switcher" role="group" aria-label="Showcase scenes"></div>
+          <div class="hero-stage">
+            <div class="hero-panels" id="hero-panels"></div>
+            <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous video example" aria-controls="hero-panels" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#carousel-arrow-icon"></use></svg></button>
+            <button class="carousel-arrow carousel-next" type="button" aria-label="Next video example" aria-controls="hero-panels" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#carousel-arrow-icon"></use></svg></button>
+          </div>
+          <figcaption class="hero-caption">
+            <span class="prompt" aria-live="polite"></span>
+            <button class="play" type="button" hidden></button>
+            <span class="video-status" role="status" hidden></span>
+          </figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="media-shell section" id="method" aria-labelledby="method-heading">
