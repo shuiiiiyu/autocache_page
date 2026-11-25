@@ -152,7 +152,7 @@
 
     <section class="media-shell section" id="results" aria-labelledby="results-heading">
       <h2 id="results-heading">Speed and reference fidelity</h2>
-      <p class="text-panel result-note">On Qwen-Image-2.1, AutoCache reaches <strong>31.52 dB at 2.97×</strong>, while SeaCache reaches <strong>28.86 dB at 2.82×</strong>. Higher PSNR indicates a closer match to the uncached output.</p>
+      <p class="text-panel result-note">Across Qwen-Image-2.1, FLUX3-Image-Klein-Base, and Wan2.1, AutoCache has higher PSNR and SSIM and lower LPIPS than the three plotted baselines. Its best speedups are <strong>3.38×, 2.58×, and 2.45×</strong>, respectively. Each AutoCache radar axis shows the best result for that metric among the selected policies. The Qwen development-set sweep on the right pairs speed and fidelity for each policy and shows that AutoCache retains higher PSNR than SeaCache at comparable speedups.</p>
       <figure class="result-figure">
         <img src="assets/paper/figure1.svg" width="1260" height="288" alt="Figure 1. Reference fidelity and speed comparisons for Qwen-Image-2.1, FLUX3-Image-Klein-Base, and Wan2.1-1.3B, with the Qwen-Image-2.1 PSNR–speedup trade-off." aria-describedby="figure1-legend" loading="lazy">
         <figcaption class="chart-key" id="figure1-legend">
