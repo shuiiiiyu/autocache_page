@@ -13,17 +13,28 @@
   <link rel="canonical" href="https://vibe-hust.github.io/autocache_page/">
 </head>
 <body>
-  <main>
+  <header class="site-header">
+    <div class="media-shell site-header-inner">
+      <a class="site-brand" href="#top">AutoCache</a>
+      <nav aria-label="On this page">
+        <a href="#method">Method</a>
+        <a href="#videos">Video results</a>
+        <a href="#images">Image results</a>
+        <a href="#results">Evaluation</a>
+      </nav>
+    </div>
+  </header>
+  <main id="top">
     <section class="media-shell hero" aria-labelledby="title">
       <header class="hero-heading">
         <h1 class="project-title" id="title">AutoCache: Agent-Designed Caching for Image and Video Generation</h1>
         <div class="project-meta"><p class="project-authors"><a href="https://github.com/shuiiiiyu">Canyu Shen</a><sup>1</sup> · <a href="https://github.com/cheyan9">Yang Chen</a><sup>2</sup> · <a href="https://github.com/TetuDegit">Gezhi Zhu</a><sup>2</sup> · <a href="https://www.cwi.nl/en/people/xuemei-zhou/">Xuemei Zhou</a><sup>3</sup> · <a href="https://tenglon.github.io/">Teng Long</a><sup>4</sup> · <a href="https://taohu.me/">Vincent Tao Hu</a><sup>2</sup></p><p class="project-affiliations"><sup>1</sup>Tongji University · <sup>2</sup>Huazhong University of Science and Technology<br><sup>3</sup>Centrum voor Wiskunde en Informatica (CWI) · <sup>4</sup>University of Trento</p><p class="project-links"><a href="https://github.com/vibe-hust/autocache_code">Code</a> · <a href="https://github.com/vibe-hust">VibeLab</a></p></div>
-        <nav aria-label="On this page">
-          <a href="#method">Method</a>
-          <a href="#videos">Video results</a>
-          <a href="#images">Image results</a>
-          <a href="#results">Evaluation</a>
-        </nav>
+        <p class="hero-description">AutoCache speeds up diffusion inference by reusing computation across denoising steps.</p>
+        <p class="hero-results">
+          <span><strong>3.14×</strong> on Qwen-Image-2.1</span>
+          <span><strong>2.41×</strong> on Wan2.1</span>
+          <small>vs. uncached inference</small>
+        </p>
       </header>
       <figure class="hero-figure" id="hero-comparison" aria-label="Original and AutoCache video showcase">
         <div class="scene-switcher" role="group" aria-label="Showcase scenes"></div>
@@ -38,13 +49,20 @@
           <span class="video-status" role="status" hidden></span>
         </figcaption>
       </figure>
-      <p class="hero-description">AutoCache uses an LLM agent to discover what to measure and when to reuse cached computation. The resulting policies accelerate image and video generation without retraining or runtime LLM calls.</p>
     </section>
 
     <section class="media-shell section" id="method" aria-labelledby="method-heading">
       <h2 id="method-heading">How the agent searches</h2>
+      <p class="section-lead">An agent writes and tests cache policies offline. During inference, the frozen policy decides when to rerun the backbone blocks and when to reuse a cached residual, without retraining or runtime LLM calls.</p>
       <figure class="method-walkthrough" id="method-walkthrough">
-        <video controls playsinline preload="metadata" width="1920" height="1080"
+        <div class="method-chapters" role="group" aria-label="Animation chapters">
+          <button type="button" data-start="0" aria-controls="method-video" aria-current="true">Speedup</button>
+          <button type="button" data-start="18" aria-controls="method-video">Observations</button>
+          <button type="button" data-start="26" aria-controls="method-video">Policy code</button>
+          <button type="button" data-start="49" aria-controls="method-video">NEW / REUSE</button>
+          <button type="button" data-start="97" aria-controls="method-video">Evaluation</button>
+        </div>
+        <video id="method-video" controls playsinline preload="metadata" width="1920" height="1080"
           poster="assets/paper/method.webp" aria-label="AutoCache method animation">
           <source src="assets/media/method-walkthrough.mp4" type="video/mp4">
           <a href="assets/media/method-walkthrough.mp4">Download the method animation</a>
@@ -123,6 +141,7 @@
               <button class="carousel-arrow carousel-next" type="button" aria-label="Next image scene" aria-controls="comparison-images" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#carousel-arrow-icon"></use></svg></button>
             </div>
             <p class="case-note"></p>
+            <p class="scene-focus" aria-live="polite" hidden></p>
           </article>
         </div>
       </div>
@@ -130,6 +149,7 @@
 
     <section class="media-shell section" id="results" aria-labelledby="results-heading">
       <h2 id="results-heading">Speed and reference fidelity</h2>
+      <p class="section-lead">The Qwen-Image-2.1 trade-off shows how fidelity changes as speedup increases. Higher PSNR means a closer match to the uncached output.</p>
       <figure class="result-figure">
         <img src="assets/paper/figure1.svg" width="1260" height="288" alt="Figure 1. Reference fidelity and speed comparisons for Qwen-Image-2.1, FLUX3-Image-Klein-Base, and Wan2.1-1.3B, with the Qwen-Image-2.1 PSNR–speedup trade-off." aria-describedby="figure1-legend" loading="lazy">
         <figcaption class="chart-key" id="figure1-legend">

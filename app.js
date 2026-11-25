@@ -3,6 +3,14 @@ const methods = [
   ['dicache', 'DiCache'], ['seacache', 'SeaCache'],
 ];
 
+const imageFocus = {
+  guitars: 'Zoom in on the left guitar and compare the pickups and bridge.',
+  zebra: 'Zoom in where the violin meets the zebra and compare the bow and stripes.',
+  drawbench_0195: 'Zoom in on the fireworks and check whether the letters in “Diffusion” stay legible.',
+  drawbench_0004: 'Zoom in on the ear at the left and compare its outline.',
+  drawbench_0107: 'Zoom in on the cabinet to the left of the refrigerator and compare the handles.',
+};
+
 const paperCases = [
   {
     id: 'astronaut', kind: 'video', title: 'Astronaut near Earth',
@@ -192,7 +200,9 @@ function bindComparisonTimeline(panel, videos, keyframe) {
   if (keyframe) {
     const timestamp = `${keyframe.time.toFixed(2)} s`;
     keyframeJump.setAttribute('aria-label', `Jump all comparison videos to ${timestamp}`);
-    keyframeHint.textContent = `Click the dot to jump to ${timestamp}.`;
+    keyframeHint.textContent = keyframe.note
+      ? `At ${timestamp}, ${keyframe.note.replace(/^Compare/, 'compare')} Click the dot to jump there.`
+      : `Click the dot to jump to ${timestamp}.`;
     keyframeJump.addEventListener('click', () => seekTogether(keyframe.time), options);
   }
 
@@ -372,6 +382,7 @@ function renderImageGallery(scenes) {
   const examples = scenes.filter(scene => scene.kind === 'image' && comparisonEntries(scene).length);
   const panel = gallery.querySelector('#image-comparison');
   const row = panel.querySelector('.comparison');
+  const focus = panel.querySelector('.scene-focus');
 
   bindSceneSwitcher(gallery, panel, examples, scene => {
     panel.querySelector('.prompt').textContent = `“${scene.prompt}”`;
@@ -381,8 +392,28 @@ function renderImageGallery(scenes) {
     const [model, benchmark] = scene.model?.split(' · ', 2) ?? [];
     panel.querySelector('.case-note').textContent =
       [model, benchmark?.replace(/ (evaluation|exploration)$/, '')].filter(Boolean).join(' · ');
+    focus.textContent = imageFocus[scene.id] ?? '';
+    focus.hidden = !focus.textContent;
   });
 }
+
+const methodVideo = document.querySelector('#method-video');
+const chapterButtons = [...document.querySelectorAll('.method-chapters button')];
+
+for (const button of chapterButtons) {
+  button.addEventListener('click', () => {
+    methodVideo.currentTime = Number(button.dataset.start);
+    methodVideo.play().catch(() => {});
+  });
+}
+
+methodVideo.addEventListener('timeupdate', () => {
+  const current = chapterButtons.findLast(button => methodVideo.currentTime >= Number(button.dataset.start));
+  for (const button of chapterButtons) {
+    if (button === current) button.setAttribute('aria-current', 'true');
+    else button.removeAttribute('aria-current');
+  }
+});
 
 const incoming = new Map(window.autoCacheMedia.map(scene => [scene.id, scene]));
 const scenes = paperCases.map(scene => {
