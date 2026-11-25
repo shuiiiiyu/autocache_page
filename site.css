@@ -143,6 +143,7 @@ h2 { font-size: clamp(1.7rem, 3.7vw, 2.45rem); line-height: 1.13; letter-spacing
 .transfer-table th, .transfer-table td { padding: 8px clamp(5px, .5vw, 8px); border-bottom: 1px solid #e0e7ef; text-align: right; white-space: nowrap; }
 .transfer-table th:first-child { text-align: left; }
 .transfer-table thead { color: #304457; background: #edf2f7; }
+.transfer-table tbody { background: #fff; }
 .transfer-table th[scope="row"] { font-weight: 550; white-space: normal; }
 .transfer-table .transfer-ours { color: var(--blue); background: #e6f0fc; }
 .transfer-table .transfer-ours th { font-weight: 700; }
