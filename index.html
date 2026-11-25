@@ -29,7 +29,7 @@
       <header class="hero-heading">
         <h1 class="project-title" id="title">AutoCache: Agent-Designed Caching for Image and Video Generation</h1>
         <div class="project-meta"><p class="project-authors"><a href="https://github.com/shuiiiiyu">Canyu Shen</a><sup>1</sup> · <a href="https://github.com/cheyan9">Yang Chen</a><sup>2</sup> · <a href="https://github.com/TetuDegit">Gezhi Zhu</a><sup>2</sup> · <a href="https://www.cwi.nl/en/people/xuemei-zhou/">Xuemei Zhou</a><sup>3</sup> · <a href="https://tenglon.github.io/">Teng Long</a><sup>4</sup> · <a href="https://taohu.me/">Vincent Tao Hu</a><sup>2</sup></p><p class="project-affiliations"><sup>1</sup>Tongji University · <sup>2</sup>Huazhong University of Science and Technology<br><sup>3</sup>Centrum voor Wiskunde en Informatica (CWI) · <sup>4</sup>University of Trento</p><p class="project-links"><a href="https://github.com/vibe-hust/autocache_code">Code</a><a href="https://github.com/vibe-hust">VibeLab</a></p></div>
-        <div class="dark-panel hero-summary">
+        <div class="text-panel hero-summary">
           <p class="hero-description">AutoCache speeds up diffusion inference by reusing computation across denoising steps.</p>
           <ul class="hero-results" aria-label="AutoCache Single speedups">
             <li><strong>3.14×</strong> Qwen-Image-2.1</li>
@@ -152,7 +152,7 @@
 
     <section class="media-shell section" id="results" aria-labelledby="results-heading">
       <h2 id="results-heading">Speed and reference fidelity</h2>
-      <p class="dark-panel result-note">On Qwen-Image-2.1, AutoCache reaches <strong>31.52 dB at 2.97×</strong>, while SeaCache reaches <strong>28.86 dB at 2.82×</strong>. Higher PSNR indicates a closer match to the uncached output.</p>
+      <p class="text-panel result-note">On Qwen-Image-2.1, AutoCache reaches <strong>31.52 dB at 2.97×</strong>, while SeaCache reaches <strong>28.86 dB at 2.82×</strong>. Higher PSNR indicates a closer match to the uncached output.</p>
       <figure class="result-figure">
         <img src="assets/paper/figure1.svg" width="1260" height="288" alt="Figure 1. Reference fidelity and speed comparisons for Qwen-Image-2.1, FLUX3-Image-Klein-Base, and Wan2.1-1.3B, with the Qwen-Image-2.1 PSNR–speedup trade-off." aria-describedby="figure1-legend" loading="lazy">
         <figcaption class="chart-key" id="figure1-legend">
@@ -167,7 +167,7 @@
     <section class="transfer" aria-labelledby="transfer-heading">
       <div class="media-shell">
         <h3 id="transfer-heading">Frozen-policy transfer</h3>
-        <p class="dark-panel result-note">On FLUX.1-dev, the frozen policy achieves the highest reference fidelity among the compared methods at <strong>1.96×</strong> speedup. On GenEval 2, the transferred Qwen policy leads on fidelity and speedup at <strong>3.02×</strong>. Both policies transfer without a new search.</p>
+        <p class="text-panel result-note">On FLUX.1-dev, the frozen policy achieves the highest reference fidelity among the compared methods at <strong>1.96×</strong> speedup. On GenEval 2, the transferred Qwen policy leads on fidelity and speedup at <strong>3.02×</strong>. Both policies transfer without a new search.</p>
         <div class="transfer-grid">
           <div class="transfer-table">
             <table>
